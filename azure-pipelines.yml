@@ -12,7 +12,7 @@ pool:
 steps:
 - task: AzurePowerShell@5
   inputs:
-    azureSubscription: 'Azure Resource Manager'
+    azureSubscription: 'AzureDevOps ARM Connection'
     ScriptType: 'FilePath'
     ScriptPath: './Deploy-AzTemplate.ps1'
     ScriptArguments: -Location 'centralus' -ResourceGroupName 'RG-Multipurpose' -TemplateFile templates\azuredeploy.json

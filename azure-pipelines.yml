@@ -13,7 +13,15 @@ steps:
 - task: AzurePowerShell@5
   inputs:
     azureSubscription: 'AzureDevOps ARM Connection'
-    ScriptType: 'FilePath'
-    ScriptPath: './Deploy-AzTemplate.ps1'
-    ScriptArguments: -Location 'centralus' -ResourceGroupName 'RG-Multipurpose' -TemplateFile templates\azuredeploy.json
-    azurePowerShellVersion: 'LatestVersion'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'AzureDevOps ARM Connection'
+    subscriptionId: 'f799acb6-27df-4b01-ad21-eb5ba7d2bffe'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'RG-Multipurpose'
+    location: 'Central US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://github.com/Alfonso-Rey/AzureRmPipeline-repo/blob/main/azuredeploy.json'
+    deploymentMode: 'Incremental'
+    deploymentName: 'DevOps-Deployment01'

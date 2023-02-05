@@ -10,6 +10,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: InstallSSHKey@0
+  inputs:
+    knownHostsEntry: 'github.com'
+    sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCk/gtmTfKa3EzKDWUYQQGKuhZN+KWhpy36HOyDhLZS6Wd08nEw5nP2qlQRPyvGr/ewGR9QPdS4lfuFBY3O7xTSQXfGWzTAwF0XEso5gW0pwQgANh16Zk6uQWUfB2BBGRtVCnqFugpy/jLxbGyZdWCa6FupMsFg16cfTjfp4tcm07pb/KIGxkGntdRc96DX/EHJQIpC/9roGY598h57WISeh8eTg5UzT3twgzQEg8X9yhk52ZZmWOALs/zbDrqE9fHCVpnhES0X85b8nCCvdar55nu+gK+GzwZqXA5pvKJ5LyIkoqmDg2XG7NRb6s8VDwZSupq59QL00j5FKGLLRjUiv35wYMUarnX1DkvM8GcLAN4EoG9lNK/2Ce942C3GsKi3NWk8PtnwyX8w5vNUsz0Or9ficl+aFkwXqQSA54dVtZPYMM3t334f0K1TH/P0mo82HMgnB4sd1SXMTN/yiEVSx5vxEoJQpkLfAZ/mUo2ozgTXyLEtrepNqmTJv5HaitPKEKdHalFtNQV8NhgTWBWHHSQdB/6rPaCgLgN/emKJ4P3WJyn9bKP3O1Y1DnQOxgjUEGH9MnId23y/Gw7PeOtgOHf6ErLgRntoC4uQEWMwOvx2+mQKIcYAHmRvAnTlFTlBLrUM/Zu5O72FdTEuvzIIWftnoEgAt5Lu9jS3ZjU1rw== alfonsorey@microsoft.com'
+    sshKeySecureFile: 'AzureRmPipeline-repokey'
+    
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'

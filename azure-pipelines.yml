@@ -9,6 +9,11 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+- name: TF_LOG
+  value: DEBUG
+  
+
 steps:
 - task: InstallSSHKey@0
   inputs:
